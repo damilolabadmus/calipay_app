@@ -1,5 +1,5 @@
+import 'package:calipay/welcome/welcome_page.dart';
 import 'package:flutter/material.dart';
-import 'package:sabi/welcome/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
