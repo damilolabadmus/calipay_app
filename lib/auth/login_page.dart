@@ -1,6 +1,7 @@
 import 'package:calipay/auth/sign_up.dart';
 import 'package:flutter/material.dart';
 import '../components/button.dart';
+import '../style/theme.dart' as Style;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -137,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0),
                         child: Align(
-                          alignment: Alignment(0.5, 0.5),
+                          alignment: const Alignment(0.5, 0.5),
                           child: Text("Forgot Password?",
                               style: TextStyle(
                                   color: Colors.blue.shade700,
@@ -150,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: RoundedButton(
                           text: 'Login',
                           press: () {},
-                          color: const Color(0xFF000E6D),
+                          color: Style.Colors.buttonBlue,
                           textColor: Colors.white),
                     ),
                     Row(

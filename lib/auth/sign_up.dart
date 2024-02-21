@@ -32,7 +32,7 @@ class _SignUpState extends State<SignUp> {
       CupertinoIcons.lock_fill,
       CupertinoIcons.chevron_down,    ];
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(

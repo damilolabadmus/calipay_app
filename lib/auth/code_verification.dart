@@ -1,6 +1,5 @@
 import 'package:calipay/auth/confirmation_page.dart';
 import 'package:flutter/material.dart';
-
 import '../components/button.dart';
 
 class CodeVerification extends StatefulWidget {
@@ -18,7 +17,7 @@ class _CodeVerificationState extends State<CodeVerification> {
 
     final List<String> codes = ['8', '2', '0', '6'];
 
-    Future.delayed(const Duration(seconds: 30000), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
@@ -104,27 +103,144 @@ class _CodeVerificationState extends State<CodeVerification> {
                       padding: EdgeInsets.symmetric(horizontal: 65.0),
                       child: Divider(height: 2, thickness: 3, color: Colors.grey),
                     ),
-                    Container(
-                      height: 50,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        border: Border.all(color: Colors.white, width: 2),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 13.0),
-                        child: TextField(
-                          showCursor: true,
-                          readOnly: true,
-                          decoration: InputDecoration(
-                            hintText: '8',
-                            // hintText: codes[index],
-                            hintStyle: TextStyle(color: Colors.black38, fontSize: 14),
-                            border: InputBorder.none,
+                    /// WORK ON THIS TO REMOVE ERROR AND MANY CODE FOR LISTVIEW
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 74,
+                          width: 60,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: codes.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              if (index < codes.length) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade200,
+                                    border: Border.all(color: Colors.white, width: 5),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const TextField(
+                                    showCursor: true,
+                                    readOnly: true,
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                      hintText: '8',
+                                      // hintText: codes[index], // invalid constant value
+                                      hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return const SizedBox();
+                              }
+                            },
                           ),
                         ),
-                      ),
+                        SizedBox(
+                          height: 70,
+                          width: 60,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: codes.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              if (index < codes.length) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade200,
+                                    border: Border.all(color: Colors.white, width: 2),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const TextField(
+                                    showCursor: true,
+                                    readOnly: true,
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                      hintText: '2',
+                                      // hintText: codes[index], // invalid constant value
+                                      hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return const SizedBox();
+                              }
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: 70,
+                          width: 60,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: codes.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              if (index < codes.length) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade200,
+                                    border: Border.all(color: Colors.white, width: 2),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const TextField(
+                                    showCursor: true,
+                                    readOnly: true,
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                      hintText: '0',
+                                      // hintText: codes[index], // invalid constant value
+                                      hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return const SizedBox();
+                              }
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: 70,
+                          width: 60,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: codes.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              if (index < codes.length) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade200,
+                                    border: Border.all(color: Colors.white, width: 2),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const TextField(
+                                    showCursor: true,
+                                    readOnly: true,
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                      hintText: '6',
+                                      // hintText: codes[index], // invalid constant value
+                                      hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return const SizedBox();
+                              }
+                            },
+                          ),
+                        ),
+
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 18.0),
