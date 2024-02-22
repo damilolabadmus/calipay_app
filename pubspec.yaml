@@ -66,6 +66,7 @@ flutter:
   assets:
     - assets/
     - assets/calipay_logo.png
+    - assets/logo_filled.png
     - assets/colored_background.png
     - assets/customers.png
     - assets/suppliers.png
@@ -77,4 +78,5 @@ flutter:
     - assets/settings.png
     - assets/profile.png
     - assets/sales.png
+    - assets/mouse.png
 

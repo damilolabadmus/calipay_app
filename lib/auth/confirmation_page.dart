@@ -1,7 +1,7 @@
 import 'package:calipay/landing/langing_page.dart';
 import 'package:flutter/material.dart';
-
 import '../components/button.dart';
+import '../style/theme.dart' as Style;
 
 class ConfirmationPage extends StatelessWidget {
   const ConfirmationPage({super.key});
@@ -11,7 +11,7 @@ class ConfirmationPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
+        Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 200),
@@ -27,7 +27,7 @@ class ConfirmationPage extends StatelessWidget {
           },
         ),
       );
-    });
+  });
 
     return Scaffold(
       body: Stack(
@@ -87,7 +87,7 @@ class ConfirmationPage extends StatelessWidget {
                             press: () {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Landing()));
                             },
-                            color: Colors.blue.shade700,
+                            color: Style.Colors.buttonBlue,
                             textColor: Colors.white),
                       ),
                     ),

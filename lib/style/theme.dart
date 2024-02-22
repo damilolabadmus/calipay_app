@@ -4,9 +4,15 @@ class Colors {
   const Colors();
 
   static const Color backgroundBlue = Color(0xFF000E6D);
-  static const Color white = Color(0xFFFFFFFF);
   static const Color searchActiveBg = Color(0xFFE5F8FF);
   static const Color buttonBlue = Color(0xFF000E6D);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color grey200 = Color(0xFFEEEEEE);
+  static const Color grey300 = Color(0xFFE0E0E0);
+
+
+
+
 
 
 

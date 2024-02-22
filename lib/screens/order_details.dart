@@ -1,30 +1,30 @@
-import 'package:calipay/screens/payment_option.dart';
+import 'package:calipay/screens/receipt_page.dart';
 import 'package:flutter/material.dart';
 import '../style/theme.dart' as Style;
 
-class Cart extends StatefulWidget {
-  const Cart({super.key});
+class OrderDetails extends StatefulWidget {
+  const OrderDetails({super.key});
 
   @override
-  State<Cart> createState() => _CartState();
+  State<OrderDetails> createState() => _OrderDetailsState();
 }
 
-class _CartState extends State<Cart> {
+class _OrderDetailsState extends State<OrderDetails> {
   final customerItems = [
-    {"name": 'GoodTime Mouse', "address": '8000 DPL, Rainbo', "price": 'Price: N2,000.00'},
-    {"name": 'Kingsley David', "address": '08115455294', "description": '79 Folagoro, Shomolu,\nLagos State, Nigeria'},
+    {"description": 'GoodTime Mouse,\n8000 DPL Rainbo', "price": 'N2,000.00', "quantity": '10 Pieces', "total": 'N20,000.00'},
+    {"description ": 'Samsung 33\n', "address": '08115455294', "description": '79 Folagoro, Shomolu,\nLagos State, Nigeria'},
   ];
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3000), () {
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 200),
-          pageBuilder: (_, __, ___) => const PaymentOption(),
+          pageBuilder: (_, __, ___) => const ReceiptPage(),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -66,7 +66,7 @@ class _CartState extends State<Cart> {
                           onPressed: () {
                             Navigator.pop(context);
                           },),
-                        const Text('My Cart', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
+                        const Text('Order Details', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
                         Container(
                           decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10))),
                           padding: const EdgeInsets.only(left: 28),
@@ -110,8 +110,8 @@ class _CartState extends State<Cart> {
                                       radius: 45,
                                       child: Image.asset(
                                         'assets/mouse.png',
-                                        height: 65,
-                                        width: 68,
+                                        height: 60,
+                                        width: 60,
                                         fit: BoxFit.fill,
                                       ),
                                     ),
@@ -120,40 +120,34 @@ class _CartState extends State<Cart> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          const Text('GoodTime Mouse ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 15, fontFamily: 'Poppins-Regular')),
-                                          const Text('8000 DPL Rainbo', style: TextStyle(color: Colors.white, fontSize: 15)),
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 8.0),
-                                            child: Text('Price: N2,000.00', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 10)),
-                                          ),
-                                          Row(children: [
-                                            Container(
-                                              padding: const EdgeInsets.symmetric(horizontal: 2),
-                                              decoration: const BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
-                                              child: const Text('-', style: TextStyle(fontWeight: FontWeight.w800),)),
-                                            const Text('10', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800)),
-                                            Container(
-                                                padding: const EdgeInsets.symmetric(horizontal: 2),
-                                                decoration: const BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
-                                                child: const Text('+')),
-                                          ],)
+                                          const Text('GoodTime Mouse,\n8000 DPL Rainbo',
+                                              style: TextStyle(
+                                                  color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Poppins-Regular')),
+                                          const Divider(height: 2, thickness: 5, color: Style.Colors.white),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: const [
+                                              Text('Price: N2,000.00  |  ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 8, fontFamily: 'Poppins-Regular')),
+                                              Text('Qty: 10 Pieces', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 8, fontFamily: 'Poppins-Regular'))
+                                            ],),
+                                          const Divider(height: 2, thickness: 5, color: Style.Colors.white),
+                                          const Text('Total: N20,000.00', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Poppins-Regular')),
                                         ],
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 48,
-                                      child: ElevatedButton(
-                                        onPressed: () {},
-                                        style: ButtonStyle(
-                                          backgroundColor: MaterialStateProperty.all<Color>(
-                                            Colors.grey.shade100,
+                                    Align(
+                                      alignment: Alignment.topCenter,
+                                      child: SizedBox(
+                                        width: 50,
+                                        child: ElevatedButton(
+                                          onPressed: () {},
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(
+                                              Colors.grey.shade100,
+                                            ),
                                           ),
+                                          child: const Icon(Icons.delete, color: Colors.brown),
                                         ),
-                                        child: const Icon(Icons.delete, color: Colors.brown),
                                       ),
                                     )
                                   ],
@@ -164,26 +158,6 @@ class _CartState extends State<Cart> {
                         ),
                       ),
                     ),
-
-                    /*Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const Text('Total: N102,650.00', style: TextStyle(color: Style.Colors.buttonBlue, fontSize: 14)),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Discount Voucher Code', style: TextStyle(color: Colors.black12, fontSize: 10)),
-                              Container(height: 8, color: Colors.black26, width: 50)
-                            ],
-                          ),
-                          const Text('8000 DPL Rainbo', style: TextStyle(color: Colors.white, fontSize: 14)),
-                        ],
-                      ),
-                    )
-                    RoundedButton(text: "Submit Order", press: () {}, color: Style.Colors.buttonBlue, textColor: Style.Colors.white)
-                   */
                   ],
                 ),
               ),

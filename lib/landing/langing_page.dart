@@ -31,7 +31,7 @@ class _LandingState extends State<Landing> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    Future.delayed(const Duration(seconds: 30000), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(

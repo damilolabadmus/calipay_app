@@ -1,5 +1,4 @@
 import 'package:calipay/auth/code_verification.dart';
-import 'package:calipay/auth/confirmation_page.dart';
 import 'package:flutter/material.dart';
 import '../components/button.dart';
 
