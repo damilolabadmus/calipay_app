@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'cart.dart';
 
 class ProductPage extends StatefulWidget {
@@ -11,8 +12,9 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
 
-    /*Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 30000), () {
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
@@ -30,7 +32,7 @@ class _ProductPageState extends State<ProductPage> {
         ),
       );
     });
-*/
+
     return Container(color: Colors.blue);
   }
 }

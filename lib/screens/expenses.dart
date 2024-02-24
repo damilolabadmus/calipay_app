@@ -1,18 +1,18 @@
-import 'package:calipay/screens/receipt_page.dart';
+import 'package:calipay/screens/add_expenses.dart';
 import 'package:flutter/material.dart';
 import '../style/theme.dart' as Style;
 
-class OrderDetails extends StatefulWidget {
-  const OrderDetails({super.key});
+class Expenses extends StatefulWidget {
+  const Expenses({super.key});
 
   @override
-  State<OrderDetails> createState() => _OrderDetailsState();
+  State<Expenses> createState() => _ExpensesState();
 }
 
-class _OrderDetailsState extends State<OrderDetails> {
-  final customerItems = [
-    {"description": 'GoodTime Mouse,\n8000 DPL Rainbo', "price": 'N2,000.00', "quantity": '10 Pieces', "total": 'N20,000.00'},
-    {"description ": 'Samsung 33\n', "address": '08115455294', "description": '79 Folagoro, Shomolu,\nLagos State, Nigeria'},
+class _ExpensesState extends State<Expenses> {
+  final expenseItems = [
+    {"name": 'My Personal', "details": 'Expenses for car', "date": '5th December, 2023'},
+    {"name": 'My medical bills', "details": '', "date": '', "day": '3rd January, 2024'},
   ];
 
   @override
@@ -24,7 +24,7 @@ class _OrderDetailsState extends State<OrderDetails> {
         context,
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 200),
-          pageBuilder: (_, __, ___) => const ReceiptPage(),
+          pageBuilder: (_, __, ___) => const NewExpenses(),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -66,7 +66,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                           onPressed: () {
                             Navigator.pop(context);
                           },),
-                        const Text('Order Details', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
+                        const Text('Expenses', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
                         Container(
                           decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10))),
                           padding: const EdgeInsets.only(left: 28),
@@ -94,10 +94,36 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ),
                 child: Column(
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Container(
+                        width: size.width * 0.8,
+                        height: size.height * 0.07,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade200, width: 1),
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Colors.blueGrey.shade200,
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.only(top: 7.0, left: 5),
+                          child: TextField(
+                            showCursor: true,
+                            readOnly: true,
+                            decoration: InputDecoration(
+                              hintText: 'Search',
+                              border: InputBorder.none,
+                              suffixIcon: Icon(Icons.search, color: Style.Colors.buttonBlue),
+                              contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
-                          children: customerItems.map((item) {
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: expenseItems.map((item) {
                             return Card(
                               color: Style.Colors.buttonBlue,
                               child: Padding(
@@ -105,49 +131,38 @@ class _OrderDetailsState extends State<OrderDetails> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
-                                    CircleAvatar(
+                                    const CircleAvatar(
                                       backgroundColor: Style.Colors.grey200,
                                       radius: 45,
-                                      child: Image.asset(
-                                        'assets/mouse.png',
-                                        height: 60,
-                                        width: 60,
+                                      /*child: Image.asset(
+                                        'assets/logo_filled.png',
+                                        height: 65,
+                                        width: 68,
                                         fit: BoxFit.fill,
-                                      ),
+                                      ),*/
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 4.0),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          const Text('GoodTime Mouse,\n8000 DPL Rainbo',
-                                              style: TextStyle(
-                                                  color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Poppins-Regular')),
-                                          const Divider(height: 2, thickness: 5, color: Style.Colors.white),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: const [
-                                              Text('Price: N2,000.00  |  ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 8, fontFamily: 'Poppins-Regular')),
-                                              Text('Qty: 10 Pieces', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 8, fontFamily: 'Poppins-Regular'))
-                                            ],),
-                                          const Divider(height: 2, thickness: 5, color: Style.Colors.white),
-                                          const Text('Total: N20,000.00', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Poppins-Regular')),
+                                        children: const [
+                                          Text('My Roses Supplier', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16, fontFamily: 'Poppins-Regular')),
+                                          Text('Justice Maxwell', style: TextStyle(color: Colors.white, fontSize: 17)),
+                                          Divider(height: 2, color: Colors.white, thickness: 4),
+                                          Text('08115455294', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 10)),
                                         ],
                                       ),
                                     ),
-                                    Align(
-                                      alignment: Alignment.topCenter,
-                                      child: SizedBox(
-                                        width: 50,
-                                        child: ElevatedButton(
-                                          onPressed: () {},
-                                          style: ButtonStyle(
-                                            backgroundColor: MaterialStateProperty.all<Color>(
-                                              Colors.grey.shade100,
-                                            ),
+                                    SizedBox(
+                                      width: 50,
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.all<Color>(
+                                            Colors.grey.shade100,
                                           ),
-                                          child: const Icon(Icons.delete, color: Colors.brown),
                                         ),
+                                        child: const Icon(Icons.abc),
                                       ),
                                     )
                                   ],

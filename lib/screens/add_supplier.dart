@@ -22,7 +22,7 @@ class _NewSupplierState extends State<NewSupplier> {
         context,
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 200),
-          pageBuilder: (_, __, ___) => const Cart(),
+          pageBuilder: (_, __, ___) => const ProductPage(),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
