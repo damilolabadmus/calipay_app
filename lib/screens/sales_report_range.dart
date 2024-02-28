@@ -1,20 +1,19 @@
-import 'package:calipay/screens/sales_report_range.dart';
+import 'package:calipay/components/button.dart';
 import 'package:flutter/material.dart';
 import '../style/theme.dart' as Style;
+import 'expenses_report_range.dart';
 
-class Reports extends StatefulWidget {
-  const Reports({super.key});
+class SalesReportRange extends StatefulWidget {
+  const SalesReportRange({super.key});
 
   @override
-  State<Reports> createState() => _ReportsState();
+  State<SalesReportRange> createState() => _SalesReportRangeState();
 }
 
-class _ReportsState extends State<Reports> {
-  final reportItems = [
-    'Monthly Sales Report',
-    'Monthly Expenses Report',
-    'Sales Report Range Search',
-    'Expenses Report Range Search'
+class _SalesReportRangeState extends State<SalesReportRange> {
+  final salesItems = [
+    'Select Range Start Date',
+    'Select Range End Date',
   ];
 
   @override
@@ -26,7 +25,7 @@ class _ReportsState extends State<Reports> {
         context,
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 200),
-          pageBuilder: (_, __, ___) => const SalesReportRange(),
+          pageBuilder: (_, __, ___) => const ExpensesReportRange(),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -68,7 +67,7 @@ class _ReportsState extends State<Reports> {
                           onPressed: () {
                             Navigator.pop(context);
                           },),
-                        const Text('Reports', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
+                        const Text('Sales Report Range', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
                         Container(
                           decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10))),
                           padding: const EdgeInsets.only(left: 28),
@@ -96,37 +95,43 @@ class _ReportsState extends State<Reports> {
                 ),
                 child: Column(
                   children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: reportItems.map((item) {
-                            return Column(
-                              children: [
-                                const SizedBox(height: 10),
-                                ElevatedButton(
-                                  onPressed: () { },
-                                  style: ButtonStyle(
-                                    elevation: MaterialStateProperty.all<double>(10),
-                                    backgroundColor: MaterialStateProperty.all<Color>(
-                                      Style.Colors.white,
-                                    ),
-                                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                      const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
-                                    ),),
-                                  child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text(item,
-                                          style:  const TextStyle(
-                                              color: Style.Colors.buttonBlue,
-                                              fontSize: 17, wordSpacing: 2))),
-                                ),
-                                const SizedBox(height: 10),
-                              ],
-                            );
-                          }).toList(),
-                        ),
-                      ),
+                    Column(
+                      children: salesItems.map((item) {
+                        return Column(
+                          children: [
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              width: 300,
+                              height: 50,
+                              child: ElevatedButton(
+                                onPressed: () { },
+                                style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all<double>(5),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                    Style.Colors.white,
+                                  ),
+                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                    const EdgeInsets.symmetric(vertical: 6, horizontal: 5),
+                                  ),),
+                                child: Text(item, style:  const TextStyle(color: Style.Colors.buttonBlue, fontSize: 17, wordSpacing: 2)),
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                          ],
+                        );
+                      }).toList(),
                     ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: RoundedButton(
+                        text: 'Submit',
+                        press: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ExpensesReportRange()));
+                        },
+                        textColor: Colors.white,
+                        color: Style.Colors.buttonBlue,
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -136,3 +141,21 @@ class _ReportsState extends State<Reports> {
     );
   }
 }
+
+
+/* Align(
+    alignment: Alignment.topCenter,
+    child: SizedBox(
+      width: 50,
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            Colors.grey.shade100,
+          ),
+        ),
+        child: const Icon(Icons.delete_outline_rounded, color: Colors.red),
+      ),
+    ),
+  )
+*/

@@ -96,7 +96,7 @@ class _RecoverPasswordState extends State<RecoverPassword> {
                           elevation: 3,
                           child: Container(
                             height: 50,
-                            width: 280,
+                            width: 320,
                             /* width: size.width * 0.6,  // mediaquery is giving error o, I don't understand
                             height: size.height * 0.08,*/
                             decoration: BoxDecoration(
@@ -112,7 +112,7 @@ class _RecoverPasswordState extends State<RecoverPassword> {
                                 decoration: InputDecoration(
                                   hintText: 'Email Address',
                                   hintStyle: TextStyle(color: Colors.black38, fontSize: 14),
-                                  suffixIcon: Icon(Icons.email_sharp, color: Colors.blue),
+                                  suffixIcon: Icon(Icons.email_sharp, color: Colors.brown, size: 15),
                                   border: InputBorder.none,
                                 ),
                               ),

@@ -1,43 +1,22 @@
 import 'package:flutter/material.dart';
 import '../style/theme.dart' as Style;
-import 'order_details.dart';
 
-class OrderHistory extends StatefulWidget {
-  const OrderHistory({super.key});
+class SalesList extends StatefulWidget {
+  const SalesList({super.key});
 
   @override
-  State<OrderHistory> createState() => _OrderHistoryState();
+  State<SalesList> createState() => _SalesListState();
 }
 
-class _OrderHistoryState extends State<OrderHistory> {
-  final orderItems = [
-    {"name": 'Receipt Number', "number": '77356565', "Quantity": 'Number of items: 2', "day": '6th January, 2024', "amount": "N104,764,50"},
-    {"name": 'Receipt Number', "number": '24544543', "Quantity": 'Number of items: 7', "day": '3rd February, 2024', "amount": "N63,514,40"},
-    {"name": 'Receipt Number', "number": '56899043', "Quantity": 'Number of items: 5', "day": '19 February, 2024', "amount": "N555,895,00"},
+class _SalesListState extends State<SalesList> {
+  final customerItems = [
+    {"description": 'LG 32 TV with free Antenna', "price": 'N92,790.76 x 3', "total": 'N278,372.28', "image": 'assets/tv.png'},
+    {"description": 'Samsung 33', "price": 'N5,000.00 x 7', "total": 'N35,000', "image": 'assets/mouse.png'},
   ];
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          transitionDuration: const Duration(milliseconds: 200),
-          pageBuilder: (_, __, ___) => const OrderDetails(),
-          transitionsBuilder: (_, animation, __, child) {
-            return SlideTransition(
-              position: Tween<Offset>(
-                begin: const Offset(1.0, 0.0),
-                end: Offset.zero,
-              ).animate(animation),
-              child: child,
-            );
-          },
-        ),
-      );
-    });
 
     return Scaffold(
       body: Stack(
@@ -67,7 +46,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                           onPressed: () {
                             Navigator.pop(context);
                           },),
-                        const Text('Order History', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
+                        const Text('All Sales', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
                         Container(
                           decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10))),
                           padding: const EdgeInsets.only(left: 28),
@@ -98,30 +77,38 @@ class _OrderHistoryState extends State<OrderHistory> {
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
-                          children: orderItems.map((item) {
+                          children: customerItems.map((item) {
                             return Card(
                               elevation: 5,
-                              shadowColor: Style.Colors.redBrown,
+                              shadowColor: Colors.red,
                               color: Style.Colors.white,
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+                                padding: const EdgeInsets.only(top: 12.0, bottom: 5),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: const [
-                                        Text('Receipt Number', style: TextStyle(color: Style.Colors.redBrown, fontWeight: FontWeight.w700, fontSize: 14, fontFamily: 'Poppins-Regular')),
-                                        Text('77356565', style: TextStyle(color: Style.Colors.buttonBlue, fontSize: 16)),
-                                        Text('Number of items: 2', style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.w400, fontSize: 10)),
-                                      ],
+                                    Image.asset(
+                                      '${item["image"]}',
+                                      height: 60,
+                                      width: 60,
+                                      fit: BoxFit.fill,
                                     ),
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: const [
-                                        Text('6th January, 2024', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w500, fontSize: 8)),
-                                        Text('N104,764,50', style: TextStyle(color: Style.Colors.redBrown, fontWeight: FontWeight.w700, fontSize: 15, fontFamily: 'Poppins-Regular')),
-                                    ],)
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 4.0),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text('${item["description"]}',
+                                              style: const TextStyle(
+                                                  color: Style.Colors.buttonBlue, fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Poppins-Regular')),
+                                          const SizedBox(height: 5),
+                                          Row(children: [
+                                            Text("Price: ${item["price"]}  |  ", style: const TextStyle(color: Colors.blue, fontWeight: FontWeight.w600, fontSize: 12, fontFamily: 'Poppins-Regular')),
+                                            Text('Total: ${item["total"]}', style: const TextStyle(color: Colors.blue, fontWeight: FontWeight.w600, fontSize: 12, fontFamily: 'Poppins-Regular')),
+                                          ],)
+                                         ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),

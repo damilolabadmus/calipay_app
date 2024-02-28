@@ -107,23 +107,23 @@ class _PaymentOptionState extends State<PaymentOption> {
                                 ElevatedButton(
                                   onPressed: () { },
                                   style: ButtonStyle(
+                                    elevation: MaterialStateProperty.all<double>(5),
                                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
-                                        side: const BorderSide(color: Colors.blueGrey),
                                       ),
                                     ),
                                     backgroundColor: MaterialStateProperty.all<Color>(
-                                      Style.Colors.buttonBlue,
+                                      Style.Colors.white,
                                     ),
                                   padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                    const EdgeInsets.symmetric(vertical: 26, horizontal: 10),
+                                    const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
                                   ),),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(item, style:  const TextStyle(color: Colors.white, fontSize: 19)),
-                                      const Icon(Icons.circle, color: Colors.white),
+                                      Text(item, style:  const TextStyle(color: Style.Colors.buttonBlue, fontSize: 17, letterSpacing: 2)),
+                                      const Icon(Icons.circle, color: Colors.greenAccent),
                                     ],
                                   ),
                                 ),

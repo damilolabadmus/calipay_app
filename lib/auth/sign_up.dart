@@ -25,12 +25,13 @@ class _SignUpState extends State<SignUp> {
     ];
 
     final List<IconData> entryIcon = [
-      CupertinoIcons.person_circle_fill,
-      CupertinoIcons.add_circled_solid,
-      CupertinoIcons.mail_solid,
-      CupertinoIcons.phone_circle_fill,
-      CupertinoIcons.lock_fill,
-      CupertinoIcons.chevron_down,    ];
+      CupertinoIcons.person,
+      CupertinoIcons.add_circled,
+      CupertinoIcons.mail,
+      CupertinoIcons.phone_circle,
+      CupertinoIcons.lock,
+      CupertinoIcons.chevron_down,
+    ];
 
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
@@ -117,16 +118,16 @@ class _SignUpState extends State<SignUp> {
                                       elevation: MaterialStateProperty.all<double>(5),
                                     ),
                                     child: SizedBox(
-                                      width: size.width * 0.6,
+                                      width: size.width * 0.7,
                                       height: size.height * 0.08,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                             entries[index],
-                                            style: const TextStyle(color: Colors.black38),
+                                            style: const TextStyle(color: Colors.blueGrey),
                                           ),
-                                          Icon(entryIcon[index], color: Colors.blue.shade700)
+                                          Icon(entryIcon[index], color: Colors.brown, size: 15)
                                         ],
                                       ),
                                     ),

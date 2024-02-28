@@ -1,4 +1,5 @@
 import 'package:calipay/screens/add_customer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../style/theme.dart' as Style;
 
@@ -104,18 +105,21 @@ class _CustomerListState extends State<CustomerList> {
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey.shade200, width: 1),
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.blueGrey.shade200,
+                          color: Colors.blueGrey.shade50,
                         ),
                         child: const Padding(
                           padding: EdgeInsets.only(top: 7.0, left: 5),
-                          child: TextField(
-                            showCursor: true,
-                            readOnly: true,
-                            decoration: InputDecoration(
-                              hintText: 'Search',
-                              border: InputBorder.none,
-                              suffixIcon: Icon(Icons.search, color: Style.Colors.buttonBlue),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Material(
+                            elevation: 2,
+                            child: TextField(
+                              showCursor: true,
+                              readOnly: true,
+                              decoration: InputDecoration(
+                                hintText: 'Search',
+                                border: InputBorder.none,
+                                suffixIcon: Icon(Icons.search, color: Style.Colors.buttonBlue),
+                                contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                              ),
                             ),
                           ),
                         ),
@@ -127,20 +131,22 @@ class _CustomerListState extends State<CustomerList> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: customerItems.map((item) {
                             return Card(
-                              color: Style.Colors.buttonBlue,
+                              color: Style.Colors.white,
+                              elevation: 5,
+                              shadowColor: Colors.brown,
                               child: Padding(
-                                padding: const EdgeInsets.only(top: 12.0, bottom: 5),
+                                padding: const EdgeInsets.only(top: 5.0, bottom: 5),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
                                     CircleAvatar(
-                                      backgroundColor: Style.Colors.grey200,
-                                      radius: 45,
+                                      backgroundColor: Colors.white,
+                                      radius: 40,
                                       child: Image.asset(
                                         'assets/profile.png',
-                                        height: 65,
-                                        width: 68,
-                                        fit: BoxFit.fill,
+                                        height: 32,
+                                        width: 32,
+                                        color: Style.Colors.redBrown.withOpacity(0.6),
                                       ),
                                     ),
                                     Padding(
@@ -148,9 +154,9 @@ class _CustomerListState extends State<CustomerList> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: const [
-                                          Text('Mahmud Muhammed', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16, fontFamily: 'Poppins-Regular')),
-                                          Text('08160327173', style: TextStyle(color: Colors.white, fontSize: 19)),
-                                          Text('236 Street Name, Kano Town,\nKano State, Nigeria', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400)),
+                                          Text('Mahmud Muhammed', style: TextStyle(color: Style.Colors.buttonBlue, fontWeight: FontWeight.w200, fontSize: 14, fontFamily: 'Poppins-Regular')),
+                                          Text('08160327173', style: TextStyle(color: Colors.blueGrey, fontSize: 14)),
+                                          Text('236 Street Name, Kano Town,\nKano State, Nigeria', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400)),
                                         ],
                                       ),
                                     ),
@@ -165,7 +171,7 @@ class _CustomerListState extends State<CustomerList> {
                                                 Colors.grey.shade100,
                                               ),
                                             ),
-                                            child: const Icon(Icons.remove_red_eye),
+                                            child: const Icon(Icons.remove_red_eye_outlined, color: Colors.brown, size: 16),
                                           ),
                                         ),
                                         SizedBox(
@@ -174,10 +180,10 @@ class _CustomerListState extends State<CustomerList> {
                                             onPressed: () {},
                                             style: ButtonStyle(
                                               backgroundColor: MaterialStateProperty.all<Color>(
-                                                Colors.grey.shade100,
+                                                Colors.grey.shade50,
                                               ),
                                             ),
-                                            child: const Icon(Icons.phone),
+                                            child: const Icon(CupertinoIcons.phone, size: 16, color: Colors.brown),
                                           ),
                                         ),
                                       ],

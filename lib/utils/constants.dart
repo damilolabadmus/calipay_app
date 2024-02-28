@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-const bool yes = true;
-
 const kLoginTextStyle = TextStyle(
   fontSize: 28,
   color: Color(0xFF61688B),
@@ -14,4 +12,16 @@ const menuTextStyle = TextStyle(
   color: Color(0xFF61688B),
   height: 2,
   fontFamily: 'Poppins-Regular',
+);
+
+const kBankItemValue = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.bold,
+    color: Colors.blue
+);
+
+const kBankItemTitle = TextStyle(
+    fontSize: 10.0,
+    fontWeight: FontWeight.w600,
+    color: Colors.black54
 );

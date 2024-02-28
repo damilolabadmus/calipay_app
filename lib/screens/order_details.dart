@@ -1,3 +1,4 @@
+import 'package:calipay/screens/expenses.dart';
 import 'package:calipay/screens/receipt_page.dart';
 import 'package:flutter/material.dart';
 import '../style/theme.dart' as Style;
@@ -11,8 +12,8 @@ class OrderDetails extends StatefulWidget {
 
 class _OrderDetailsState extends State<OrderDetails> {
   final customerItems = [
-    {"description": 'GoodTime Mouse,\n8000 DPL Rainbo', "price": 'N2,000.00', "quantity": '10 Pieces', "total": 'N20,000.00'},
-    {"description ": 'Samsung 33\n', "address": '08115455294', "description": '79 Folagoro, Shomolu,\nLagos State, Nigeria'},
+    {"description": 'GoodTime Mouse,\n8000 DPL Rainbo', "price": 'N2,000.00', "quantity": '10 Pieces', "total": 'N20,000.00', "image": 'assets/mouse.png'},
+    {"description ": 'Samsung 33', "price": 'N80,000.00', "quantity": '2 pieces', "total": 'N160,000.00', "image": 'assets/tv.png'},
   ];
 
   @override
@@ -24,7 +25,7 @@ class _OrderDetailsState extends State<OrderDetails> {
         context,
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 200),
-          pageBuilder: (_, __, ___) => const ReceiptPage(),
+          pageBuilder: (_, __, ___) => const Expenses(),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -99,46 +100,44 @@ class _OrderDetailsState extends State<OrderDetails> {
                         child: Column(
                           children: customerItems.map((item) {
                             return Card(
-                              color: Style.Colors.buttonBlue,
+                              elevation: 5,
+                              shadowColor: Colors.red,
+                              color: Style.Colors.white,
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 12.0, bottom: 5),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
-                                    CircleAvatar(
-                                      backgroundColor: Style.Colors.grey200,
-                                      radius: 45,
-                                      child: Image.asset(
-                                        'assets/mouse.png',
-                                        height: 60,
-                                        width: 60,
-                                        fit: BoxFit.fill,
-                                      ),
+                                    Image.asset(
+                                      '${item["image"]}',
+                                      height: 25,
+                                      width: 30,
+                                      fit: BoxFit.fill,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 4.0),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          const Text('GoodTime Mouse,\n8000 DPL Rainbo',
-                                              style: TextStyle(
-                                                  color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Poppins-Regular')),
-                                          const Divider(height: 2, thickness: 5, color: Style.Colors.white),
+                                          Text('${item["description"]}',
+                                              style: const TextStyle(
+                                                  color: Style.Colors.buttonBlue, fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Poppins-Regular')),
+                                         const Divider(height: 2, thickness: 5, color: Style.Colors.buttonBlue),
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: const [
-                                              Text('Price: N2,000.00  |  ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 8, fontFamily: 'Poppins-Regular')),
-                                              Text('Qty: 10 Pieces', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 8, fontFamily: 'Poppins-Regular'))
+                                            children: [
+                                              Text("Price: ${item["price"]}  |  ", style: const TextStyle(color: Style.Colors.buttonBlue, fontWeight: FontWeight.w500, fontSize: 8, fontFamily: 'Poppins-Regular')),
+                                              Text("Qty: ${item["quantity"]}", style: const TextStyle(color: Style.Colors.buttonBlue, fontWeight: FontWeight.w500, fontSize: 8, fontFamily: 'Poppins-Regular'))
                                             ],),
                                           const Divider(height: 2, thickness: 5, color: Style.Colors.white),
-                                          const Text('Total: N20,000.00', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Poppins-Regular')),
+                                          Text('Total: ${item["total"]}', style: const TextStyle(color: Style.Colors.buttonBlue, fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Poppins-Regular')),
                                         ],
                                       ),
                                     ),
                                     Align(
                                       alignment: Alignment.topCenter,
                                       child: SizedBox(
-                                        width: 50,
+                                        width: 40,
                                         child: ElevatedButton(
                                           onPressed: () {},
                                           style: ButtonStyle(
@@ -146,7 +145,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                               Colors.grey.shade100,
                                             ),
                                           ),
-                                          child: const Icon(Icons.delete, color: Colors.brown),
+                                          child: const Icon(Icons.delete_outline_rounded, color: Colors.red, size: 16),
                                         ),
                                       ),
                                     )

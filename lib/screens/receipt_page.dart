@@ -18,6 +18,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
   @override
   Widget build(BuildContext context) {
 
+/*
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
@@ -36,6 +37,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
         ),
       );
     });
+*/
 
     return Container(color: Colors.blue);
   }

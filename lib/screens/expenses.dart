@@ -67,13 +67,17 @@ class _ExpensesState extends State<Expenses> {
                             Navigator.pop(context);
                           },),
                         const Text('Expenses', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 32.0),
+                          child: Icon(Icons.calendar_month, color: Colors.white, size: 30,),
+                        ),
                         Container(
                           decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10))),
                           padding: const EdgeInsets.only(left: 28),
                           child: Image.asset(
                             'assets/logo_filled.png',
-                            height: 70,
-                            width: 100,
+                            height: 60,
+                            width: 90,
                           ),),
                       ],
                     )
@@ -86,7 +90,7 @@ class _ExpensesState extends State<Expenses> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: size.height * 0.8,
+                height: size.height * 0.7,
                 padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(topRight: Radius.circular(60)),
@@ -100,9 +104,8 @@ class _ExpensesState extends State<Expenses> {
                         width: size.width * 0.8,
                         height: size.height * 0.07,
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey.shade200, width: 1),
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.blueGrey.shade200,
+                          color: Colors.white,
                         ),
                         child: const Padding(
                           padding: EdgeInsets.only(top: 7.0, left: 5),
@@ -111,7 +114,6 @@ class _ExpensesState extends State<Expenses> {
                             readOnly: true,
                             decoration: InputDecoration(
                               hintText: 'Search',
-                              border: InputBorder.none,
                               suffixIcon: Icon(Icons.search, color: Style.Colors.buttonBlue),
                               contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                             ),
@@ -125,31 +127,26 @@ class _ExpensesState extends State<Expenses> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: expenseItems.map((item) {
                             return Card(
-                              color: Style.Colors.buttonBlue,
+                              elevation: 5,
                               child: Padding(
-                                padding: const EdgeInsets.only(top: 12.0, bottom: 5),
+                                padding: const EdgeInsets.only(top: 15.0, bottom: 5),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
                                     const CircleAvatar(
-                                      backgroundColor: Style.Colors.grey200,
-                                      radius: 45,
-                                      /*child: Image.asset(
-                                        'assets/logo_filled.png',
-                                        height: 65,
-                                        width: 68,
-                                        fit: BoxFit.fill,
-                                      ),*/
+                                      radius: 25,
+                                      child: Icon(Icons.print_sharp, color: Style.Colors.buttonBlue, size: 20)
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 4.0),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: const [
-                                          Text('My Roses Supplier', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16, fontFamily: 'Poppins-Regular')),
-                                          Text('Justice Maxwell', style: TextStyle(color: Colors.white, fontSize: 17)),
-                                          Divider(height: 2, color: Colors.white, thickness: 4),
-                                          Text('08115455294', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 10)),
+                                          Text('My Roses Supplier', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w700, fontSize: 14, fontFamily: 'Poppins-Regular')),
+                                          Text('Justice Maxwell', style: TextStyle(color: Colors.blueGrey, fontSize: 14)),
+                                          // Divider(height: 2, color: Colors.white, thickness: 4),
+                                          SizedBox(height: 6),
+                                          Text('08115455294', style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.w400, fontSize: 10)),
                                         ],
                                       ),
                                     ),
@@ -162,7 +159,7 @@ class _ExpensesState extends State<Expenses> {
                                             Colors.grey.shade100,
                                           ),
                                         ),
-                                        child: const Icon(Icons.abc),
+                                        child: const Icon(Icons.brush_outlined, color: Colors.blue, size: 15)
                                       ),
                                     )
                                   ],
@@ -179,6 +176,20 @@ class _ExpensesState extends State<Expenses> {
             ),
           ),
         ],),
+      bottomNavigationBar: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          const Spacer(),
+          FloatingActionButton(
+            backgroundColor: Colors.white10,
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewExpenses()));
+            },
+            elevation: 4,
+            child: const Icon(Icons.print_sharp, color: Colors.blueGrey, size: 35),
+          ),
+        ],
+      ),
     );
   }
 }

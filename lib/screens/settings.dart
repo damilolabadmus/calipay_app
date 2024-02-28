@@ -1,20 +1,22 @@
-import 'package:calipay/screens/sales_report_range.dart';
+import 'package:calipay/screens/sales_list.dart';
 import 'package:flutter/material.dart';
 import '../style/theme.dart' as Style;
 
-class Reports extends StatefulWidget {
-  const Reports({super.key});
+class Settings extends StatefulWidget {
+  const Settings({super.key});
 
   @override
-  State<Reports> createState() => _ReportsState();
+  State<Settings> createState() => _SettingsState();
 }
 
-class _ReportsState extends State<Reports> {
-  final reportItems = [
-    'Monthly Sales Report',
-    'Monthly Expenses Report',
-    'Sales Report Range Search',
-    'Expenses Report Range Search'
+class _SettingsState extends State<Settings> {
+  final profileItems = [
+    {"name": 'Shop Information'},
+    {"name": 'Categories'},
+    {"name": 'Update Profile'},
+    {"name": '2-Authentication Setup'},
+    {"name": 'Email Verification Setup'},
+    {"name": 'Reset Password Setup'},
   ];
 
   @override
@@ -26,7 +28,7 @@ class _ReportsState extends State<Reports> {
         context,
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 200),
-          pageBuilder: (_, __, ___) => const SalesReportRange(),
+          pageBuilder: (_, __, ___) => const SalesList(),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -68,7 +70,7 @@ class _ReportsState extends State<Reports> {
                           onPressed: () {
                             Navigator.pop(context);
                           },),
-                        const Text('Reports', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
+                        const Text('Settings', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
                         Container(
                           decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10))),
                           padding: const EdgeInsets.only(left: 28),
@@ -88,7 +90,7 @@ class _ReportsState extends State<Reports> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: size.height * 0.8,
+                height: size.height * 0.7,
                 padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(topRight: Radius.circular(60)),
@@ -97,36 +99,26 @@ class _ReportsState extends State<Reports> {
                 child: Column(
                   children: [
                     Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: reportItems.map((item) {
-                            return Column(
-                              children: [
-                                const SizedBox(height: 10),
-                                ElevatedButton(
-                                  onPressed: () { },
-                                  style: ButtonStyle(
-                                    elevation: MaterialStateProperty.all<double>(10),
-                                    backgroundColor: MaterialStateProperty.all<Color>(
-                                      Style.Colors.white,
+                        child: SingleChildScrollView(
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: profileItems.map((item) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                                  child: TextField(
+                                    showCursor: true,
+                                    readOnly: true,
+                                    decoration: InputDecoration(
+                                      hintText: item["name"] as String,
+                                      hintStyle: TextStyle(color: Colors.blue.shade800),
+                                      suffixIcon: const Icon(Icons.arrow_forward_ios_rounded, color: Style.Colors.buttonBlue, size: 15),
+                                      contentPadding: const EdgeInsets.only(left: 7.0, top: 10),
                                     ),
-                                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                      const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
-                                    ),),
-                                  child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text(item,
-                                          style:  const TextStyle(
-                                              color: Style.Colors.buttonBlue,
-                                              fontSize: 17, wordSpacing: 2))),
-                                ),
-                                const SizedBox(height: 10),
-                              ],
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                    ),
+                                  ),
+                                );
+                              }).toList()
+                          ),
+                        )),
                   ],
                 ),
               ),

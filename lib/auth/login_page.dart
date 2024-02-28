@@ -57,7 +57,6 @@ class _LoginPageState extends State<LoginPage> {
                     'assets/calipay_logo.png',
                     height: 110,
                     width: 140,
-                    // alignment: const Alignment(0.0, 0.7), // Adjusted alignment to move the logo down
                   ),
                 ),
               ],
@@ -97,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                           elevation: MaterialStateProperty.all<double>(3),
                         ),
                         child: SizedBox(
-                          width: size.width * 0.6,
+                          width: size.width * 0.7,
                           height: size.height * 0.07,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                                 'Email or Phone Number',
                                 style: TextStyle(color: Colors.black38),
                               ),
-                              Icon(Icons.person_pin, color: Colors.blue.shade700)
+                              Icon(Icons.person_pin, color: Colors.blue.shade600, size: 15)
                             ],
                           ),
                         ),
@@ -121,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                           elevation: MaterialStateProperty.all<double>(3),
                         ),
                         child: SizedBox(
-                          width: size.width * 0.6,
+                          width: size.width * 0.7,
                           height: size.height * 0.07,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                                 'Password',
                                 style: TextStyle(color: Colors.black38),
                               ),
-                              Icon(Icons.lock, color: Colors.blue.shade700)
+                              Icon(Icons.lock, color: Colors.blue.shade600, size: 15)
                             ],
                           ),
                         ),
@@ -157,12 +156,12 @@ class _LoginPageState extends State<LoginPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                      const Text('Now Here?', style: TextStyle(color: Colors.black45, fontSize: 20)),
+                      const Text('Now Here?', style: TextStyle(color: Colors.black45, fontSize: 16)),
                       TextButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUp()));
                           },
-                          child: const Text('SignUp', style: TextStyle(color: Color(0xFF0021FF), fontWeight: FontWeight.bold, fontSize: 20),))
+                          child: const Text('SignUp', style: TextStyle(color: Color(0xFF0021FF), fontWeight: FontWeight.bold, fontSize: 16),))
                     ],)
                   ],
                 ),

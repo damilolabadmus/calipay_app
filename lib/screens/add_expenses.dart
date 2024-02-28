@@ -67,6 +67,7 @@ class _NewExpensesState extends State<NewExpenses> {
                         IconButton(
                           icon: const Icon(Icons.arrow_back_ios),
                           color: Colors.white,
+                          iconSize: 20,
                           onPressed: () {
                             Navigator.pop(context);
                           },),
@@ -106,23 +107,24 @@ class _NewExpensesState extends State<NewExpenses> {
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               child: Container(
-                                width: size.width * 0.7,
+                                width: size.width * 0.8,
                                 height: size.height * 0.07,
                                 decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade200, width: 1),
                                   borderRadius: BorderRadius.circular(10.0),
-                                  color: Colors.black12,
+                                  color: Colors.white,
+                                  boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 6.0)],
                                 ),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(top: 7.0, left: 5),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 5),
                                   child: TextField(
                                     showCursor: true,
                                     readOnly: true,
                                     decoration: InputDecoration(
-                                      hintText: 'Expenses Title',
+                                      fillColor: Colors.white,
+                                      hintText: item,
                                       border: InputBorder.none,
-                                      suffixIcon: Icon(Icons.person_pin, color: Style.Colors.buttonBlue),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      hintStyle: const TextStyle(color: Colors.brown, fontSize: 13),
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
                                     ),
                                   ),
                                 ),

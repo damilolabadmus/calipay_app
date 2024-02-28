@@ -98,19 +98,19 @@ class _NewCustomerState extends State<NewCustomer> {
                         height: size.height * 0.2,
                         width: size.width * 0.4,
                         decoration: BoxDecoration(
-                            color: Colors.black26,
+                            color: Colors.blueGrey.shade50,
                             borderRadius: const BorderRadius.all(Radius.circular(20)),
                           border: Border.all(color: Colors.white70, width: 5),
                         ),),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Container(
-                          width: size.width * 0.7,
+                          width: size.width * 0.8,
                           height: size.height * 0.07,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade200, width: 1),
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.black12,
+                            color: Colors.blueGrey.shade50,
                           ),
                           child: const Padding(
                             padding: EdgeInsets.only(top: 7.0, left: 5),
@@ -120,7 +120,8 @@ class _NewCustomerState extends State<NewCustomer> {
                               decoration: InputDecoration(
                                 hintText: 'Customer Full Name',
                                 border: InputBorder.none,
-                                suffixIcon: Icon(Icons.person_pin, color: Style.Colors.buttonBlue),
+                                hintStyle: TextStyle(fontSize: 14),
+                                suffixIcon: Icon(Icons.person, color: Style.Colors.redBrown, size: 15),
                                 contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                               ),
                             ),
@@ -130,12 +131,12 @@ class _NewCustomerState extends State<NewCustomer> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Container(
-                          width: size.width * 0.7,
+                          width: size.width * 0.8,
                           height: size.height * 0.07,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade200, width: 1),
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.black12,
+                            color: Colors.blueGrey.shade50,
                           ),
                           child: const Padding(
                             padding: EdgeInsets.only(top: 7.0, left: 5),
@@ -144,8 +145,9 @@ class _NewCustomerState extends State<NewCustomer> {
                               readOnly: true,
                               decoration: InputDecoration(
                                 hintText: 'Customer Email Address',
+                                hintStyle: TextStyle(fontSize: 14),
                                 border: InputBorder.none,
-                                suffixIcon: Icon(Icons.email_sharp, color: Style.Colors.buttonBlue),
+                                suffixIcon: Icon(Icons.email_outlined, color: Style.Colors.redBrown, size: 15),
                                 contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                               ),
                             ),
@@ -155,12 +157,12 @@ class _NewCustomerState extends State<NewCustomer> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Container(
-                          width: size.width * 0.7,
+                          width: size.width * 0.8,
                           height: size.height * 0.07,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade200, width: 1),
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.black12,
+                            color: Colors.blueGrey.shade50,
                           ),
                           child: const Padding(
                             padding: EdgeInsets.only(top: 7.0, left: 5),
@@ -170,7 +172,8 @@ class _NewCustomerState extends State<NewCustomer> {
                               decoration: InputDecoration(
                                 hintText: 'Customer Phone Number',
                                 border: InputBorder.none,
-                                suffixIcon: Icon(CupertinoIcons.phone_circle_fill, color: Style.Colors.buttonBlue),
+                                hintStyle: TextStyle(fontSize: 14),
+                                suffixIcon: Icon(CupertinoIcons.phone, color: Style.Colors.redBrown, size: 15),
                                 contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                               ),
                             ),
@@ -179,11 +182,11 @@ class _NewCustomerState extends State<NewCustomer> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 12),
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5.0),
-                              color: Colors.black12,
+                              color: Colors.blueGrey.shade50,
                             ),
                             child: Row(
                               children: const [
@@ -196,16 +199,9 @@ class _NewCustomerState extends State<NewCustomer> {
                                       decoration: InputDecoration(
                                         hintText: 'Customer Address (Optional)',
                                         border: InputBorder.none,
-                                        hintStyle: TextStyle(color: Colors.grey), // Add hintStyle here
+                                        hintStyle: TextStyle(color: Colors.grey , fontSize: 13), // Add hintStyle here
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Icon(
-                                    Icons.add_card, // Changed to add_circle_outline for example
-                                    color: Style.Colors.buttonBlue,
                                   ),
                                 ),
                               ],

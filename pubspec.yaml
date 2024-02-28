@@ -79,4 +79,7 @@ flutter:
     - assets/profile.png
     - assets/sales.png
     - assets/mouse.png
+    - assets/cart.png
+    - assets/tv.png
+    - assets/expense_icon.png
 

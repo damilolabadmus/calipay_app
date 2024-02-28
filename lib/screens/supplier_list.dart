@@ -1,4 +1,5 @@
 import 'package:calipay/screens/add_supplier.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../style/theme.dart' as Style;
 
@@ -45,7 +46,7 @@ class _SupplierListState extends State<SupplierList> {
         children: [
           ColorFiltered(
             colorFilter: const ColorFilter.mode(
-              Color(0xFF000E6D), // Deep blue color
+              Color(0xFF000E6D),
               BlendMode.modulate,
             ),
             child: Image.asset(
@@ -63,7 +64,7 @@ class _SupplierListState extends State<SupplierList> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.arrow_back_ios),
+                          icon: const Icon(Icons.arrow_back_ios, size: 15),
                           color: Colors.white,
                           onPressed: () {
                             Navigator.pop(context);
@@ -104,7 +105,7 @@ class _SupplierListState extends State<SupplierList> {
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey.shade200, width: 1),
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.blueGrey.shade200,
+                          color: Colors.blueGrey.shade50,
                         ),
                         child: const Padding(
                           padding: EdgeInsets.only(top: 7.0, left: 5),
@@ -114,7 +115,7 @@ class _SupplierListState extends State<SupplierList> {
                             decoration: InputDecoration(
                               hintText: 'Search',
                               border: InputBorder.none,
-                              suffixIcon: Icon(Icons.search, color: Style.Colors.buttonBlue),
+                              suffixIcon: Icon(Icons.search, color: Style.Colors.redBrown),
                               contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                             ),
                           ),
@@ -127,19 +128,21 @@ class _SupplierListState extends State<SupplierList> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: supplierItems.map((item) {
                             return Card(
-                              color: Style.Colors.buttonBlue,
+                              color: Style.Colors.white,
+                              elevation: 5,
+                              shadowColor: Colors.greenAccent,
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 12.0, bottom: 5),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
                                     CircleAvatar(
-                                      backgroundColor: Style.Colors.grey200,
+                                      backgroundColor: Style.Colors.white,
                                       radius: 45,
                                       child: Image.asset(
                                         'assets/logo_filled.png',
-                                        height: 65,
-                                        width: 68,
+                                        height: 35,
+                                        width: 38,
                                         fit: BoxFit.fill,
                                       ),
                                     ),
@@ -148,9 +151,9 @@ class _SupplierListState extends State<SupplierList> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: const [
-                                          Text('My Roses Supplier', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16, fontFamily: 'Poppins-Regular')),
-                                          Text('Justice Maxwell', style: TextStyle(color: Colors.white, fontSize: 19)),
-                                          Text('08115455294', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400)),
+                                          Text('My Roses Supplier', style: TextStyle(color: Style.Colors.buttonBlue, fontWeight: FontWeight.w200, fontSize: 14, fontFamily: 'Poppins-Regular')),
+                                          Text('Justice Maxwell', style: TextStyle(color: Colors.blueGrey, fontSize: 16)),
+                                          Text('08115455294', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400)),
                                         ],
                                       ),
                                     ),
@@ -165,7 +168,7 @@ class _SupplierListState extends State<SupplierList> {
                                                 Colors.grey.shade100,
                                               ),
                                             ),
-                                            child: const Icon(Icons.remove_red_eye),
+                                            child: const Icon(Icons.remove_red_eye_outlined, size: 16,),
                                           ),
                                         ),
                                         SizedBox(
@@ -177,7 +180,7 @@ class _SupplierListState extends State<SupplierList> {
                                                 Colors.grey.shade100,
                                               ),
                                             ),
-                                            child: const Icon(Icons.phone),
+                                            child: const Icon(CupertinoIcons.phone, size: 16),
                                           ),
                                         ),
                                       ],

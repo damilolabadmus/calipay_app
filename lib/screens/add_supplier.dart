@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../components/button.dart';
 import '../style/theme.dart' as Style;
-import 'cart.dart';
 
 class NewSupplier extends StatefulWidget {
   const NewSupplier({super.key});
@@ -99,19 +98,19 @@ class _NewSupplierState extends State<NewSupplier> {
                         height: size.height * 0.2,
                         width: size.width * 0.4,
                         decoration: BoxDecoration(
-                          color: Colors.black26,
+                          color: Colors.blueGrey.shade50,
                           borderRadius: const BorderRadius.all(Radius.circular(20)),
                           border: Border.all(color: Colors.white70, width: 5),
                         ),),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Container(
-                          width: size.width * 0.7,
+                          width: size.width * 0.8,
                           height: size.height * 0.07,
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey.shade200, width: 1),
+                            border: Border.all(color: Colors.grey.shade50, width: 1),
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.black12,
+                            color: Colors.blueGrey.shade50,
                           ),
                           child: const Padding(
                             padding: EdgeInsets.only(top: 7.0, left: 5),
@@ -121,7 +120,7 @@ class _NewSupplierState extends State<NewSupplier> {
                               decoration: InputDecoration(
                                 hintText: 'Supplier or what?',
                                 border: InputBorder.none,
-                                suffixIcon: Icon(Icons.image_not_supported, color: Style.Colors.buttonBlue),
+                                suffixIcon: Icon(Icons.image_not_supported_outlined, color: Style.Colors.redBrown, size: 14),
                                 contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                               ),
                             ),
@@ -131,12 +130,12 @@ class _NewSupplierState extends State<NewSupplier> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Container(
-                          width: size.width * 0.7,
+                          width: size.width * 0.8,
                           height: size.height * 0.07,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade200, width: 1),
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.black12,
+                            color: Colors.blueGrey.shade50,
                           ),
                           child: const Padding(
                             padding: EdgeInsets.only(top: 7.0, left: 5),
@@ -146,7 +145,7 @@ class _NewSupplierState extends State<NewSupplier> {
                               decoration: InputDecoration(
                                 hintText: 'Supplier Full Name',
                                 border: InputBorder.none,
-                                suffixIcon: Icon(Icons.person_pin, color: Style.Colors.buttonBlue),
+                                suffixIcon: Icon(Icons.person_pin, color: Style.Colors.redBrown, size: 14),
                                 contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                               ),
                             ),
@@ -156,12 +155,12 @@ class _NewSupplierState extends State<NewSupplier> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Container(
-                          width: size.width * 0.7,
+                          width: size.width * 0.8,
                           height: size.height * 0.07,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade200, width: 1),
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.black12,
+                            color: Colors.blueGrey.shade50,
                           ),
                           child: const Padding(
                             padding: EdgeInsets.only(top: 7.0, left: 5),
@@ -171,7 +170,7 @@ class _NewSupplierState extends State<NewSupplier> {
                               decoration: InputDecoration(
                                 hintText: 'Supplier Phone Number',
                                 border: InputBorder.none,
-                                suffixIcon: Icon(CupertinoIcons.phone_circle_fill, color: Style.Colors.buttonBlue),
+                                suffixIcon: Icon(CupertinoIcons.phone, color: Style.Colors.redBrown, size: 14),
                                 contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                               ),
                             ),
@@ -180,11 +179,11 @@ class _NewSupplierState extends State<NewSupplier> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5.0),
-                              color: Colors.black12,
+                              color: Colors.blueGrey.shade50,
                             ),
                             child: Row(
                               children: const [
@@ -197,16 +196,9 @@ class _NewSupplierState extends State<NewSupplier> {
                                       decoration: InputDecoration(
                                         hintText: 'Supplier Address (Optional)',
                                         border: InputBorder.none,
-                                        hintStyle: TextStyle(color: Colors.grey), // Add hintStyle here
+                                        hintStyle: TextStyle(color: Colors.black12), // Add hintStyle here
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Icon(
-                                    Icons.add_card,
-                                    color: Style.Colors.buttonBlue,
                                   ),
                                 ),
                               ],

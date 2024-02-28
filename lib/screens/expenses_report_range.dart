@@ -1,20 +1,19 @@
-import 'package:calipay/screens/sales_report_range.dart';
+import 'package:calipay/screens/settings.dart';
 import 'package:flutter/material.dart';
+import '../components/button.dart';
 import '../style/theme.dart' as Style;
 
-class Reports extends StatefulWidget {
-  const Reports({super.key});
+class ExpensesReportRange extends StatefulWidget {
+  const ExpensesReportRange({super.key});
 
   @override
-  State<Reports> createState() => _ReportsState();
+  State<ExpensesReportRange> createState() => _ExpensesReportRangeState();
 }
 
-class _ReportsState extends State<Reports> {
-  final reportItems = [
-    'Monthly Sales Report',
-    'Monthly Expenses Report',
-    'Sales Report Range Search',
-    'Expenses Report Range Search'
+class _ExpensesReportRangeState extends State<ExpensesReportRange> {
+  final expensesItems = [
+    'Select Range Start Date',
+    'Select Range End Date',
   ];
 
   @override
@@ -26,7 +25,7 @@ class _ReportsState extends State<Reports> {
         context,
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 200),
-          pageBuilder: (_, __, ___) => const SalesReportRange(),
+          pageBuilder: (_, __, ___) => const Settings(),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -68,7 +67,7 @@ class _ReportsState extends State<Reports> {
                           onPressed: () {
                             Navigator.pop(context);
                           },),
-                        const Text('Reports', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
+                        const Text('Expenses Report Ra..', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17, fontFamily: 'Poppins-Regular')),
                         Container(
                           decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10))),
                           padding: const EdgeInsets.only(left: 28),
@@ -96,37 +95,43 @@ class _ReportsState extends State<Reports> {
                 ),
                 child: Column(
                   children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: reportItems.map((item) {
-                            return Column(
-                              children: [
-                                const SizedBox(height: 10),
-                                ElevatedButton(
-                                  onPressed: () { },
-                                  style: ButtonStyle(
-                                    elevation: MaterialStateProperty.all<double>(10),
-                                    backgroundColor: MaterialStateProperty.all<Color>(
-                                      Style.Colors.white,
-                                    ),
-                                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                      const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
-                                    ),),
-                                  child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text(item,
-                                          style:  const TextStyle(
-                                              color: Style.Colors.buttonBlue,
-                                              fontSize: 17, wordSpacing: 2))),
-                                ),
-                                const SizedBox(height: 10),
-                              ],
-                            );
-                          }).toList(),
-                        ),
-                      ),
+                    Column(
+                      children: expensesItems.map((item) {
+                        return Column(
+                          children: [
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              width: 300,
+                              height: 50,
+                              child: ElevatedButton(
+                                onPressed: () { },
+                                style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all<double>(5),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                    Style.Colors.white,
+                                  ),
+                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                    const EdgeInsets.symmetric(vertical: 6, horizontal: 5),
+                                  ),),
+                                child: Text(item, style:  const TextStyle(color: Style.Colors.buttonBlue, fontSize: 17, wordSpacing: 2)),
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                          ],
+                        );
+                      }).toList(),
                     ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: RoundedButton(
+                        text: 'Submit',
+                        press: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Settings()));
+                        },
+                        textColor: Colors.white,
+                        color: Style.Colors.buttonBlue,
+                      ),
+                    )
                   ],
                 ),
               ),

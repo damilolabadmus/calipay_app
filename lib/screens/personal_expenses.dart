@@ -17,7 +17,6 @@ class _PersonalExpensesState extends State<PersonalExpenses> {
     'N103,560.000',
     'December 5th, 2023',
     '10:36 PM',
-    'Lorem ipsum dolor sit amet, consectetur \nadipiscing elit, sed do eiusmod tempor incididunt\n ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud\n exercitation ullamco laboris nisi ut aliquip ex\n ea commodo consequat. Duis aute irure dolor in\n reprehenderit in voluptate velit esse cillum nulla pariatur.\nExcepteur sint occaecat cupidatat proident.',
   ];
 
   @override
@@ -71,7 +70,7 @@ class _PersonalExpensesState extends State<PersonalExpenses> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.arrow_back_ios),
+                          icon: const Icon(Icons.arrow_back_ios, size: 25),
                           color: Colors.white,
                           onPressed: () {
                             Navigator.pop(context);
@@ -123,27 +122,23 @@ class _PersonalExpensesState extends State<PersonalExpenses> {
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               child: Container(
-                                width: size.width * 0.7,
+                                width: size.width * 0.8,
                                 height: size.height * 0.07,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                       color: Colors.grey.shade200, width: 1),
                                   borderRadius: BorderRadius.circular(10.0),
-                                  color: Colors.black12,
+                                  color: Colors.brown.shade50,
                                 ),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(top: 7.0, left: 5),
-                                  child: TextField(
-                                    showCursor: true,
-                                    readOnly: true,
-                                    decoration: InputDecoration(
-                                      hintText: 'My Personal expenses for Car',
-                                      border: InputBorder.none,
-                                      suffixIcon: Icon(Icons.person_pin,
-                                          color: Style.Colors.buttonBlue),
-                                      contentPadding: EdgeInsets.symmetric(
-                                          horizontal: 10.0),
-                                    ),
+                                child: TextField(
+                                  showCursor: true,
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                    hintText: item,
+                                    hintStyle: const TextStyle(fontSize: 12),
+                                    border: InputBorder.none,
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0),
                                   ),
                                 ),
                               ),
@@ -151,6 +146,29 @@ class _PersonalExpensesState extends State<PersonalExpenses> {
                           }).toList()
                       ),
                     )),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: Colors.brown.shade50,
+                        ),
+                        child: const Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: TextField(
+                              showCursor: true,
+                              maxLines: 6,
+                              decoration: InputDecoration(
+                                hintText: 'Lorem ipsum dolor sit amet, consectetur \nadipiscing elit, sed do eiusmod tempor incididunt\n ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud\n exercitation ullamco laboris nisi ut aliquip ex\n ea commodo consequat. Duis aute irure dolor in\n reprehenderit in voluptate velit esse cillum nulla pariatur.\nExcepteur sint occaecat cupidatat proident.',
+                                border: InputBorder.none,
+                                hintStyle: TextStyle(color: Colors.grey, fontSize: 12), // Add hintStyle here
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 18.0),
                       child: RoundedButton(
@@ -171,3 +189,4 @@ class _PersonalExpensesState extends State<PersonalExpenses> {
     );
   }
 }
+
